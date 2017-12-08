@@ -78,7 +78,14 @@ def record_step_time():
 
 print('Loading 2D tilemap...')
 # Load the tilemap
-tmx_file = tmx.TileMap.load(args.tilemap_file)
+try:
+    tmx_file = tmx.TileMap.load(args.tilemap_file)
+except:
+    tmx_file = None
+
+if not tmx_file:
+    print('ERROR: failed to load: {}'.format(os.path.basename(args.tilemap_file)))
+    sys.exit(1)
 
 tilesets_2d_found = len(tmx_file.tilesets)
 print('{} 2D tileset{} found'.format(str(tilesets_2d_found).rjust(6), 's' if tilesets_2d_found > 1 else ''))
@@ -107,8 +114,15 @@ height = tilemap.height
 record_step_time()
 
 print('Loading 3D tiles...')
-with open(args.mapping_file) as file:
-    tile_mapping = json.loads(file.read())
+try:
+    with open(args.mapping_file) as file:
+        tile_mapping = json.loads(file.read())
+except:
+    tile_mapping = None
+
+if not tile_mapping:
+    print('ERROR: failed to load: {}'.format(os.path.basename(args.mapping_file)))
+    sys.exit(1)
 
 # Loading in the 3D tile data
 tiles = {}
