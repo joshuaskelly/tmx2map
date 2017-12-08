@@ -127,7 +127,7 @@ if not tile_mapping:
 # Loading in the 3D tile data
 tiles = {}
 tile_size_3d = tile_mapping["tilesize"]
-tile_size_2d = tilemap.width
+tile_size_2d = tilemap.tilewidth
 
 tilemap_width_3d = tilemap.width * tile_size_3d
 tilemap_height_3d = tilemap.height * tile_size_3d
