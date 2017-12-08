@@ -1,0 +1,23 @@
+{
+	"tilesize": 128,
+    "tilesets": [
+        {
+            "filename": "2dtiles.png",
+            "tiles": {
+                "0": "./3dtiles/tile_0.map",
+                "1": "./3dtiles/tile_1.map",
+                "2": "./3dtiles/tile_2.map",
+                "3": "./3dtiles/tile_3.map",
+                "4": "./3dtiles/tile_4.map",
+                "5": "./3dtiles/tile_5.map",
+                "6": "./3dtiles/tile_6.map",
+                "8": "./3dtiles/tile_8.map",
+                "9": "./3dtiles/tile_9.map",
+                "12": "./3dtiles/tile_12.map",
+                "13": "./3dtiles/tile_13.map",
+                "14": "./3dtiles/tile_14.map",
+                "15": "./3dtiles/tile_15.map"
+            }
+        }
+    ]
+}

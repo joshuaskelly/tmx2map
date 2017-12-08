@@ -1,0 +1,27 @@
+# Ignore IDE files
+.idea
+.vscode
+.vs
+vs/
+
+# Ignore OS artifacts
+.DS_Store
+
+# Ignore pyenv artifacts
+.python-version
+
+# Ignore Python artifacts
+*.pyc
+*.egg-info
+.cache
+
+# Ignore Sphinx documentation artifacts
+docs/_build/
+docs/_static/
+
+# Ignore PyPi artifacts
+dist/
+build/
+
+# Ignore editor autosave directories
+autosave/
