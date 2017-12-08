@@ -10,8 +10,8 @@ class Matrices(object):
     vertical_flip[1, 1] = -1
 
     diagonal_flip = numpy.zeros((4, 4))
-    diagonal_flip[0, 1] = 1
-    diagonal_flip[1, 0] = 1
+    diagonal_flip[0, 1] = -1
+    diagonal_flip[1, 0] = -1
     diagonal_flip[2, 2] = 1
     diagonal_flip[3, 3] = 1
 

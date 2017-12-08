@@ -215,12 +215,12 @@ for layer in tilemap.layers:
                 mat = numpy.dot(mat, mathhelper.Matrices.horizontal_flip)
                 flip_face = not flip_face
 
-            if tile.dflip:
-                mat = numpy.dot(mat, mathhelper.Matrices.diagonal_flip)
-                flip_face = not flip_face
-
             if tile.vflip:
                 mat = numpy.dot(mat, mathhelper.Matrices.vertical_flip)
+                flip_face = not flip_face
+
+            if tile.dflip:
+                mat = numpy.dot(mat, mathhelper.Matrices.diagonal_flip)
                 flip_face = not flip_face
 
             prefab = tiles[tile.gid]
