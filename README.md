@@ -1,5 +1,7 @@
 # tmx2map
 
+[![Python 3](https://img.shields.io/badge/python-3-blue.svg)]() [![Discord](https://img.shields.io/badge/discord-chat-7289DA.svg)](https://discord.gg/hFct5VQ) 
+
 Convert Tiled tilemaps into Quake maps!
 
 ## Installation
