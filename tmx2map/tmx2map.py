@@ -242,6 +242,21 @@ for layer in tilemap.layers:
                 # - origin
                 # - angle
 
+                """
+                if e.classname != 'worldspawn':
+                    # Origin
+                    o = tuple(map(float, e.origin.split(' ')))
+                    o = tuple(numpy.dot(mat, (*o, 1))[:3])
+                    e.origin = ' '.join([str(c) for c in o])
+
+                    # Make this work.
+                    if hasattr(e, 'angle'):
+                        v1 = numpy.add(mathhelper.vector_from_angle(float(e.angle)), o)
+                        v1 = tuple(numpy.dot(mat, (*v1, 1))[:3])
+
+                        a = mathhelper.angle_between(numpy.add(o,), v1)
+                """
+
                 # Transform brushes
                 for copy_brush in entity.brushes:
                     brush_count += 1
