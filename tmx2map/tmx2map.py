@@ -20,6 +20,9 @@ from quake import map as m
 import mathhelper
 
 
+__version__ = '0.2.0'
+
+
 class ResolvePathAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         if isinstance(values, list):
@@ -59,7 +62,15 @@ parser.add_argument('-d',
                     action=ResolvePathAction,
                     help='name of created map file')
 
+parser.add_argument('-v',
+                    '--version',
+                    dest='version',
+                    action='version',
+                    version='%(prog)s {}'.format(__version__),
+                    help='display version number')
+
 parser.add_argument('-q',
+                    '--quiet',
                     dest='quiet',
                     action='store_true',
                     help='quiet mode')
@@ -70,13 +81,19 @@ start_time = time.time()
 step_timing = [0]
 
 
+def optional_print(msg=''):
+    if not args.quiet:
+        print(msg)
+
+
 def record_step_time():
     delta = time.time() - start_time - step_timing[-1]
     step_timing.append(delta)
-    print('{:5.4f} seconds'.format(step_timing[-1]))
-    print()
+    optional_print('{:5.4f} seconds'.format(step_timing[-1]))
+    optional_print()
 
-print('Loading 2D tilemap...')
+
+optional_print('Loading 2D tilemap...')
 # Load the tilemap
 try:
     tmx_file = tmx.TileMap.load(args.tilemap_file)
@@ -88,7 +105,7 @@ if not tmx_file:
     sys.exit(1)
 
 tilesets_2d_found = len(tmx_file.tilesets)
-print('{} 2D tileset{} found'.format(str(tilesets_2d_found).rjust(6), 's' if tilesets_2d_found > 1 else ''))
+optional_print('{} 2D tileset{} found'.format(str(tilesets_2d_found).rjust(6), 's' if tilesets_2d_found > 1 else ''))
 
 # Resolve path to map file
 if args.dest == os.getcwd():
@@ -113,7 +130,7 @@ height = tilemap.height
 
 record_step_time()
 
-print('Loading 3D tiles...')
+optional_print('Loading 3D tiles...')
 try:
     with open(args.mapping_file) as file:
         tile_mapping = json.loads(file.read())
@@ -162,12 +179,12 @@ for tileset in tile_mapping["tilesets"]:
         with open(tile_filepath) as file:
             tiles[gid] = m.loads(file.read())
 
-print('{} 3D tileset{} found'.format(str(tilesets_3d_found).rjust(6), 's' if tilesets_3d_found > 1 else ''))
-print('{} 3D tiles loaded'.format(str(len(tiles)).rjust(6)))
+optional_print('{} 3D tileset{} found'.format(str(tilesets_3d_found).rjust(6), 's' if tilesets_3d_found > 1 else ''))
+optional_print('{} 3D tiles loaded'.format(str(len(tiles)).rjust(6)))
 
 record_step_time()
 
-print('Creating map...')
+optional_print('Creating map...')
 entities = []
 
 worldspawn = m.Entity()
@@ -307,18 +324,18 @@ for layer in tilemap.layers:
             entities.append(e)
 
 
-print('{} 2d tiles processed'.format(str(tiles_processed).rjust(6)))
+optional_print('{} 2d tiles processed'.format(str(tiles_processed).rjust(6)))
 record_step_time()
 
-print('Saving: {}...'.format(os.path.basename(args.dest)))
+optional_print('Saving: {}...'.format(os.path.basename(args.dest)))
 with open(args.dest, 'w') as out_file:
     data = m.dumps(entities)
     out_file.write(data)
 
-print('{} brushes written'.format(str(brush_count).rjust(6)))
+optional_print('{} brushes written'.format(str(brush_count).rjust(6)))
 record_step_time()
 
-print('Complete!')
-print('{:5.4f} total seconds elapsed'.format(sum(step_timing)))
+optional_print('Complete!')
+optional_print('{:5.4f} total seconds elapsed'.format(sum(step_timing)))
 
 sys.exit(0)
