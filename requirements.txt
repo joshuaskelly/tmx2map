@@ -1,1 +1,2 @@
-quake-tools==0.10.0
+numpy==1.13.0
+tmx=1.9.1
