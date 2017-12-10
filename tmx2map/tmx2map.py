@@ -9,6 +9,7 @@ Supported Games:
 
 import argparse
 import json
+import math
 import os
 import sys
 import time
@@ -20,7 +21,7 @@ from quake import map as m
 import mathhelper
 
 
-__version__ = '0.2.0'
+__version__ = '0.3.0'
 
 
 class ResolvePathAction(argparse.Action):
@@ -226,19 +227,23 @@ for layer in tilemap.layers:
             mat = numpy.identity(4)
             mat[:3, 3] = tilemap_offset_x, tilemap_offset_y, 0
 
+            flip_matrix = numpy.identity(4)
+
             flip_face = False
 
             if tile.hflip:
-                mat = numpy.dot(mat, mathhelper.Matrices.horizontal_flip)
+                flip_matrix = numpy.dot(flip_matrix, mathhelper.Matrices.horizontal_flip)
                 flip_face = not flip_face
 
             if tile.vflip:
-                mat = numpy.dot(mat, mathhelper.Matrices.vertical_flip)
+                flip_matrix = numpy.dot(flip_matrix, mathhelper.Matrices.vertical_flip)
                 flip_face = not flip_face
 
             if tile.dflip:
-                mat = numpy.dot(mat, mathhelper.Matrices.diagonal_flip)
+                flip_matrix = numpy.dot(flip_matrix, mathhelper.Matrices.diagonal_flip)
                 flip_face = not flip_face
+
+            mat = numpy.dot(mat, flip_matrix)
 
             prefab = tiles[tile.gid]
             for entity in prefab:
@@ -255,24 +260,24 @@ for layer in tilemap.layers:
                     if key != "brushes":
                         setattr(e, key, getattr(entity, key))
 
-                # TODO: Transform white-listed properties
-                # - origin
-                # - angle
-
-                """
                 if e.classname != 'worldspawn':
-                    # Origin
-                    o = tuple(map(float, e.origin.split(' ')))
-                    o = tuple(numpy.dot(mat, (*o, 1))[:3])
-                    e.origin = ' '.join([str(c) for c in o])
+                    if hasattr(e, 'origin'):
+                        # Origin
+                        o = tuple(map(float, e.origin.split(' ')))
+                        orig_o = o
+                        o = tuple(numpy.dot(mat, (*o, 1))[:3])
+                        e.origin = ' '.join([str(c) for c in o])
+
+                    # TODO: Special case lights. Based off of mangle prop?
 
                     # Make this work.
-                    if hasattr(e, 'angle'):
-                        v1 = numpy.add(mathhelper.vector_from_angle(float(e.angle)), o)
-                        v1 = tuple(numpy.dot(mat, (*v1, 1))[:3])
+                    if not hasattr(e, 'angle'):
+                        setattr(e, 'angle', 0)
 
-                        a = mathhelper.angle_between(numpy.add(o,), v1)
-                """
+                    if e.angle >= 0:
+                        bearing = mathhelper.vector_from_angle(float(e.angle))
+                        bearing = tuple(numpy.dot(flip_matrix, (*bearing, 1))[:3])
+                        e.angle = mathhelper.angle_between(bearing)
 
                 # Transform brushes
                 for copy_brush in entity.brushes:

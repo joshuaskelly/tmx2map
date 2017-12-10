@@ -16,7 +16,7 @@ class Matrices(object):
     diagonal_flip[3, 3] = 1
 
 
-def angle_between(dest, base):
+def angle_between(dest, base=(1,0,0)):
     """Returns the angle in positive degrees from base to dest in the
     xy-plane.
 
@@ -34,7 +34,9 @@ def angle_between(dest, base):
     x_proj = numpy.dot(target, b_axis)
     y_proj = numpy.dot(target, p_axis)
 
-    return -math.degrees(math.atan2(y_proj, x_proj)) % 360
+    result = math.degrees(math.atan2(y_proj, x_proj))
+
+    return (result + 360) % 360
 
 
 def vector_from_angle(degrees):
