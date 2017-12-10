@@ -263,18 +263,23 @@ for layer in tilemap.layers:
                 if e.classname != 'worldspawn':
                     if hasattr(e, 'origin'):
                         # Origin
-                        o = tuple(map(float, e.origin.split(' ')))
-                        orig_o = o
-                        o = tuple(numpy.dot(mat, (*o, 1))[:3])
-                        e.origin = ' '.join([str(c) for c in o])
+                        origin = tuple(map(float, e.origin.split(' ')))
+                        origin = tuple(numpy.dot(mat, (*origin, 1))[:3])
+                        e.origin = ' '.join([str(c) for c in origin])
 
-                    # TODO: Special case lights. Based off of mangle prop?
-
-                    # Make this work.
+                    # Set entity default angle
                     if not hasattr(e, 'angle'):
                         setattr(e, 'angle', 0)
 
-                    if e.angle >= 0:
+                    if hasattr(e, 'mangle'):
+                        mangle = tuple(map(float, e.mangle.split(' ')))
+                        bearing = mathhelper.vector_from_angle(mangle[1])
+                        bearing = tuple(numpy.dot(flip_matrix, (*bearing, 1))[:3])
+                        bearing = mathhelper.angle_between(bearing)
+                        mangle = mangle[0], bearing, mangle[2]
+                        e.mangle = ' '.join([str(c) for c in mangle])
+
+                    elif float(e.angle) >= 0:
                         bearing = mathhelper.vector_from_angle(float(e.angle))
                         bearing = tuple(numpy.dot(flip_matrix, (*bearing, 1))[:3])
                         e.angle = mathhelper.angle_between(bearing)
