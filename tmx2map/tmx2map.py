@@ -177,6 +177,10 @@ for tileset in tile_mapping["tilesets"]:
         dirname = os.path.dirname(args.mapping_file)
         tile_filepath = os.path.normpath(os.path.join(dirname, tile_filename))
 
+        if not os.path.exists(tile_filepath):
+            print("WARNING: Missing 3d tile: {}".format(tile_filepath))
+            continue
+
         with open(tile_filepath) as file:
             tiles[gid] = m.loads(file.read())
 
