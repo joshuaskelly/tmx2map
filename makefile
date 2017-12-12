@@ -1,13 +1,20 @@
 .PHONY: build install_dependencies install_dev_dependencies package clean
 
-detected_OS := linux
+platform = linux
 binary_file := tmx2map
+
 ifeq ($(OS),Windows_NT)
-	detected_OS := win32
+    detected_OS := Windows
+else
+    detected_OS := $(shell uname -s)
+endif
+
+ifeq ($(detected_OS),Windows)
+	platform := win32
 	binary_file := tmx2map.exe
 endif
-ifeq ($(OS),Darwin)
-	detected_OS := macos
+ifeq ($(detected_OS),Darwin)  # Mac OS X
+	platform := macos
 endif
 
 build:
@@ -21,7 +28,7 @@ install_dev_dependencies:
 
 package: build
 	$(eval version := $(shell ./dist/$(binary_file) -v | grep -o '[0-9]\+.[0-9]\+.[0-9]\+'))
-	$(eval zip_file := tmx2map-$(version)-$(detected_OS).zip)
+	$(eval zip_file := tmx2map-$(version)-$(platform).zip)
 	zip -r $(zip_file) ./examples
 	mv $(zip_file) ./dist && cd ./dist && zip $(zip_file) $(binary_file) && mv $(zip_file) ..
 
