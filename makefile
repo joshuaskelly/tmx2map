@@ -23,9 +23,7 @@ package: build
 	$(eval version := $(shell ./dist/$(binary_file) -v | grep -o '[0-9]\+.[0-9]\+.[0-9]\+'))
 	$(eval zip_file := tmx2map-$(version)-$(detected_OS).zip)
 	zip -r $(zip_file) ./examples
-	cp ./dist/$(binary_file) ./$(binary_file)
-	zip $(zip_file) $(binary_file)
-	rm ./$(binary_file)
+	mv $(zip_file) ./dist && cd ./dist && zip $(zip_file) $(binary_file) && mv $(zip_file) ..
 
 clean:
 	rm -rf ./dist
