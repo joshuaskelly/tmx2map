@@ -21,7 +21,7 @@ from quake import map as m
 import mathhelper
 
 
-__version__ = '0.3.0'
+__version__ = '0.3.1'
 
 
 class ResolvePathAction(argparse.Action):
