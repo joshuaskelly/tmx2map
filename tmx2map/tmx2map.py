@@ -20,7 +20,7 @@ from quake import map as m
 import mathhelper
 
 
-__version__ = '0.4.1'
+__version__ = '0.5.0'
 
 
 class ResolvePathAction(argparse.Action):
@@ -193,8 +193,11 @@ entities = []
 
 worldspawn = m.Entity()
 worldspawn.classname = 'worldspawn'
-worldspawn.wad = tiles[2][0].wad
 worldspawn.brushes = []
+worldspawn.wad = ''
+
+for prop in tilemap.properties:
+    setattr(worldspawn, prop.name, prop.value)
 
 entities.append(worldspawn)
 
@@ -263,8 +266,12 @@ for layer in tilemap.layers:
 
                 # Copy entity properties
                 for key in entity.__dict__.keys():
-                    if key != "brushes":
-                        setattr(e, key, getattr(entity, key))
+                    if key != 'brushes':
+                        if key == 'wad':
+                            e.wad = ';'.join((e.wad, entity.wad))
+
+                        else:
+                            setattr(e, key, getattr(entity, key))
 
                 if e.classname != 'worldspawn':
                     if hasattr(e, 'origin'):
@@ -391,6 +398,10 @@ for layer in tilemap.layers:
             e.classname = obj.name
             entities.append(e)
 
+# Clean up worldspawn wad property
+wad_set = set(worldspawn.wad.split(';'))
+wad_set = wad_set.difference(('',))
+worldspawn.wad = ';'.join(wad_set)
 
 optional_print('{} 2d tiles processed'.format(str(tiles_processed).rjust(6)))
 record_step_time()
