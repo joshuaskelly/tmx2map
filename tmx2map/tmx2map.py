@@ -20,7 +20,7 @@ from quake import map as m
 import mathhelper
 
 
-__version__ = '0.4.0'
+__version__ = '0.4.1'
 
 
 class ResolvePathAction(argparse.Action):
@@ -213,9 +213,11 @@ for layer in tilemap.layers:
 
             # Warn if a tile is used in the 2D tilemap, but no mapping exists
             # for the 3D tiles.
-            if not tiles.get(tile.gid) and tile.gid not in missing_gids:
-                print("WARNING: Missing tile mapping for gid: {}".format(tile.gid))
-                missing_gids.append(tile.gid)
+            if not tiles.get(tile.gid):
+                if tile.gid not in missing_gids:
+                    print("WARNING: Missing tile mapping for gid: {}".format(tile.gid))
+                    missing_gids.append(tile.gid)
+
                 continue
 
             tiles_processed += 1
