@@ -365,8 +365,7 @@ for layer in tilemap.layers:
                         texture_offset = numpy.dot(texture_transform, relative_offset)
                         texture_offset = tuple(map(float, texture_offset.tolist()[:2]))
 
-                        q.offset = q.offset[0] + texture_offset[0], \
-                                   q.offset[1] + texture_offset[1]
+                        q.offset = texture_offset
 
                         b.planes.append(q)
                     e.brushes.append(b)
