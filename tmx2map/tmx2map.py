@@ -356,9 +356,6 @@ for layer in tilemap.layers:
                         texture_transform = numpy.dot(texture_translation_matrix, texture_scale_matrix)
                         texture_transform = numpy.dot(texture_transform, texture_rotation_matrix)
 
-                        dx = numpy.dot(texture_transform, (1.0, 0.0, 0.0, 0.0))
-                        dy = numpy.dot(texture_transform, (0.0, 1.0, 0.0, 0.0))
-
                         brush_offset = tilemap_offset_x, tilemap_offset_y, tilemap_offset_z, 1.0
 
                         world_swizzle_matrix = mathhelper.Matrices.axis_aligned_swizzle_matrix(dominant_axis)
