@@ -350,16 +350,13 @@ for layer in tilemap.layers:
                         dx = numpy.dot(texture_transform, (1.0, 0.0, 0.0, 0.0))
                         dy = numpy.dot(texture_transform, (0.0, 1.0, 0.0, 0.0))
 
-                        # Change of coordinate system from world to texture space
-                        world_to_texture_space = mathhelper.Matrices.transition_matrix(dx, dy, (0.0, 0.0, 1.0, 0.0))
-
                         brush_offset = tilemap_offset_x, tilemap_offset_y, tilemap_offset_z, 1.0
 
                         world_swizzle_matrix = mathhelper.Matrices.axis_aligned_swizzle_matrix(dominant_axis)
                         relative_offset = numpy.dot(world_swizzle_matrix, brush_offset)
 
                         # Multiply offset vector to get texture space offset
-                        texture_offset = numpy.dot(world_to_texture_space, relative_offset)
+                        texture_offset = numpy.dot(texture_transform, relative_offset)
                         texture_offset = tuple(map(float, texture_offset.tolist()[:2]))
 
                         q.offset = q.offset[0] + texture_offset[0], \
