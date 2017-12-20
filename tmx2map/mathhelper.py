@@ -1,6 +1,7 @@
 import math
 import numpy
 
+
 class Matrices(object):
     # Helper matrices
     horizontal_flip = numpy.identity(4)
@@ -14,6 +15,68 @@ class Matrices(object):
     diagonal_flip[1, 0] = -1
     diagonal_flip[2, 2] = 1
     diagonal_flip[3, 3] = 1
+
+    @staticmethod
+    def rotation_matrix(degrees):
+        angle = math.radians(degrees)
+        return numpy.array((
+            (math.cos(angle), -math.sin(angle), 0.0, 0.0),
+            (math.sin(angle), math.cos(angle), 0.0, 0.0),
+            (0.0, 0.0, 1.0, 0.0),
+            (0.0, 0.0, 0.0, 1.0)
+        ))
+
+    @staticmethod
+    def scale_matrix(x_scale, y_scale):
+        return numpy.array((
+            (x_scale, 0.0, 0.0, 0.0),
+            (0.0, y_scale, 0.0, 0.0),
+            (0.0, 0.0, 1.0, 0.0),
+            (0.0, 0.0, 0.0, 1.0)
+        ))
+
+    @staticmethod
+    def translation_matrix(x_offset, y_offset):
+        return numpy.array((
+            (1.0, 0.0, 0.0, x_offset),
+            (0.0, 1.0, 0.0, y_offset),
+            (0.0, 0.0, 1.0, 0.0),
+            (0.0, 0.0, 0.0, 1.0)
+        ))
+
+    @staticmethod
+    def transition_matrix(x_vec, y_vec, z_vec):
+        return numpy.array((
+            (x_vec[0], y_vec[0], z_vec[0], 0.0),
+            (x_vec[1], y_vec[1], z_vec[1], 0.0),
+            (x_vec[2], y_vec[2], z_vec[2], 0.0),
+            (0.0, 0.0, 0.0, 1.0)
+        ))
+
+    def axis_aligned_swizzle_matrix(dominant_axis):
+        if dominant_axis == 0:
+            return numpy.array((
+                (0.0, -1.0, 0.0, 0.0),
+                (0.0, 0.0, -1.0, 0.0),
+                (0.0, 0.0, 0.0, 0.0),
+                (0.0, 0.0, 0.0, 1.0)
+            ))
+
+        elif dominant_axis == 1:
+            return numpy.array((
+                (-1.0, 0.0, 0.0, 0.0),
+                (0.0, 0.0, -1.0, 0.0),
+                (0.0, 0.0, 0.0, 0.0),
+                (0.0, 0.0, 0.0, 1.0)
+            ))
+
+        else:
+            return numpy.array((
+                (1.0, 0.0, 0.0, 0.0),
+                (0.0, 1.0, 0.0, 0.0),
+                (0.0, 0.0, 0.0, 0.0),
+                (0.0, 0.0, 0.0, 1.0)
+            ))
 
 
 def angle_between(dest, base=(1,0,0)):

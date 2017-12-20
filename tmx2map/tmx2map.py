@@ -9,7 +9,6 @@ Supported Games:
 
 import argparse
 import json
-import math
 import os
 import sys
 import time
@@ -21,7 +20,7 @@ from quake import map as m
 import mathhelper
 
 
-__version__ = '0.3.1'
+__version__ = '0.4.0'
 
 
 class ResolvePathAction(argparse.Action):
@@ -226,10 +225,11 @@ for layer in tilemap.layers:
 
             tilemap_offset_x = x * tile_size_3d + (tile_size_3d / 2) - (tilemap_width_3d / 2)
             tilemap_offset_y = y * tile_size_3d - (tile_size_3d / 2) - (tilemap_height_3d / 2)
+            tilemap_offset_z = 0
 
             # Calculate tile transformation matrix
             mat = numpy.identity(4)
-            mat[:3, 3] = tilemap_offset_x, tilemap_offset_y, 0
+            mat[:3, 3] = tilemap_offset_x, tilemap_offset_y, tilemap_offset_z
 
             flip_matrix = numpy.identity(4)
 
@@ -309,6 +309,61 @@ for layer in tilemap.layers:
                         if flip_face:
                             # Re-order the points to flip the face
                             q.points = list(reversed(q.points))
+
+                        # Calculate plane normal
+                        p0, p1, p2 = q.points[:3]
+                        plane_normal = numpy.cross(
+                            numpy.subtract(p2, p0),
+                            numpy.subtract(p1, p0)
+                        )
+                        plane_normal = plane_normal / numpy.linalg.norm(plane_normal)
+
+                        # Determine vector component with larget magnitude
+                        component_magnitudes = tuple(map(abs, (plane_normal[0],
+                                                               plane_normal[1],
+                                                               plane_normal[2])))
+
+                        X_AXIS = 0
+                        Y_AXIS = 1
+                        Z_AXIS = 2
+
+                        dominant_axis = X_AXIS
+
+                        if component_magnitudes[Y_AXIS] > component_magnitudes[dominant_axis]:
+                            dominant_axis = Y_AXIS
+
+                        if component_magnitudes[Z_AXIS] >= component_magnitudes[dominant_axis]:
+                            dominant_axis = Z_AXIS
+
+                        # Build texture space transformation matrix
+                        texture_x_offset, texture_y_offset = copy_plane.offset
+                        texture_x_scale, texture_y_scale = copy_plane.scale
+                        angle = copy_plane.rotation
+
+                        texture_translation_matrix = mathhelper.Matrices.translation_matrix(texture_x_offset, texture_y_offset)
+                        texture_scale_matrix = mathhelper.Matrices.scale_matrix(1.0 / texture_x_scale, 1.0 / texture_y_scale)
+                        texture_rotation_matrix = mathhelper.Matrices.rotation_matrix(angle)
+
+                        texture_transform = numpy.dot(texture_translation_matrix, texture_scale_matrix)
+                        texture_transform = numpy.dot(texture_transform, texture_rotation_matrix)
+
+                        dx = numpy.dot(texture_transform, (1.0, 0.0, 0.0, 0.0))
+                        dy = numpy.dot(texture_transform, (0.0, 1.0, 0.0, 0.0))
+
+                        # Change of coordinate system from world to texture space
+                        world_to_texture_space = mathhelper.Matrices.transition_matrix(dx, dy, (0.0, 0.0, 1.0, 0.0))
+
+                        brush_offset = tilemap_offset_x, tilemap_offset_y, tilemap_offset_z, 1.0
+
+                        world_swizzle_matrix = mathhelper.Matrices.axis_aligned_swizzle_matrix(dominant_axis)
+                        relative_offset = numpy.dot(world_swizzle_matrix, brush_offset)
+
+                        # Multiply offset vector to get texture space offset
+                        texture_offset = numpy.dot(world_to_texture_space, relative_offset)
+                        texture_offset = tuple(map(float, texture_offset.tolist()[:2]))
+
+                        q.offset = q.offset[0] + texture_offset[0], \
+                                   q.offset[1] + texture_offset[1]
 
                         b.planes.append(q)
                     e.brushes.append(b)
