@@ -36,11 +36,11 @@ class Matrices(object):
         ))
 
     @staticmethod
-    def translation_matrix(x_offset, y_offset):
+    def translation_matrix(x_offset, y_offset, z_offset=0.0):
         return numpy.array((
             (1.0, 0.0, 0.0, x_offset),
             (0.0, 1.0, 0.0, y_offset),
-            (0.0, 0.0, 1.0, 0.0),
+            (0.0, 0.0, 1.0, z_offset),
             (0.0, 0.0, 0.0, 1.0)
         ))
 

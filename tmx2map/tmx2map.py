@@ -375,24 +375,152 @@ for layer in tilemap.layers:
 
     # Object layer
     elif isinstance(layer, tmx.ObjectGroup):
+
         for obj in layer.objects:
+            object_type = 'Point'
+
+            if obj.ellipse:
+                object_type = 'Ellipse'
+
+            elif obj.polygon:
+                object_type = 'Polygon'
+
+            elif obj.polyline:
+                object_type = 'Polyline'
+
+            elif obj.width > 0 and obj.height > 0:
+                object_type = 'Rectangle'
+
             z = 0
 
-            e = m.Entity()
-            for prop in obj.properties:
-                if prop.name == 'Z':
-                    z = prop.value
+            if object_type == 'Point':
+                e = m.Entity()
+                for prop in obj.properties:
+                    if prop.name == 'Z':
+                        z = prop.value
+
+                    else:
+                        setattr(e, prop.name, prop.value)
+
+                scale = tile_size_3d / tile_size_2d
+                ex = (obj.x * scale) - (tilemap_width_3d / 2)
+                ey = (tilemap.height * tile_size_3d) - obj.y * scale - (tilemap_height_3d / 2)
+                origin = ex, ey, z
+                e.origin = "{} {} {}".format(*origin)
+                e.classname = obj.name
+                entities.append(e)
+
+            elif object_type == 'Rectangle':
+                classname = obj.name
+
+                if classname == 'worldspawn':
+                    e = worldspawn
 
                 else:
-                    setattr(e, prop.name, prop.value)
+                    e = m.Entity()
 
-            scale = tile_size_3d / tile_size_2d
-            ex = (obj.x * scale) - (tilemap_width_3d / 2)
-            ey = (tilemap.height * tile_size_3d) - obj.y * scale - (tilemap_height_3d / 2)
-            origin = ex, ey, z
-            e.origin = "{} {} {}".format(*origin)
-            e.classname = obj.name
-            entities.append(e)
+                e.classname = obj.name
+
+                for prop in obj.properties:
+                    if prop.name == 'Z':
+                        z = prop.value
+
+                    else:
+                        setattr(e, prop.name, prop.value)
+
+                scale = tile_size_3d / tile_size_2d
+                ex = (obj.x * scale) - (tilemap_width_3d / 2)
+                ey = (tilemap.height * tile_size_3d) - obj.y * scale - (tilemap_height_3d / 2)
+                origin = ex, ey, z
+
+                width = obj.width * scale
+                height = obj.height * scale
+
+                left = ex
+                right = ex + width
+                up = ey
+                down = ey - height
+                top = 4096
+                bottom = -4096
+
+                #mat = mathhelper.Matrices.translation_matrix(ex, ey)
+                #mat = numpy.dot(
+                #    mat,
+                #    mathhelper.Matrices.rotation_matrix(obj.rotation)
+                #)
+                #
+                #def xform_point(point):
+                #    result = numpy.dot(mat, (*point, 1))
+                #    return tuple(result.tolist()[:3])
+
+                texture = 'trigger'
+                if hasattr(e, 'texture'):
+                    texture = e.texture
+
+                # Create brush
+                b = m.Brush()
+                b.planes = []
+
+                # Top
+                p = m.Plane()
+                p.texture_name = texture
+                p.offset = 0, 0
+                p.rotation = 0
+                p.scale = 1, 1
+                p.points = (left, up, top), (right, up, top), (left, down, top)
+                b.planes.append(p)
+
+                # Bottom
+                p = m.Plane()
+                p.texture_name = texture
+                p.offset = 0, 0
+                p.rotation = 0
+                p.scale = 1, 1
+                p.points = (left, down, bottom), (right, up, bottom), (left, up, bottom)
+                b.planes.append(p)
+
+
+
+                # Right
+                p = m.Plane()
+                p.texture_name = texture
+                p.offset = 0, 0
+                p.rotation = 0
+                p.scale = 1, 1
+                p.points = (right, down, top), (right, up, top), (right, up, bottom)
+                b.planes.append(p)
+
+                # Left
+                p = m.Plane()
+                p.texture_name = texture
+                p.offset = 0, 0
+                p.rotation = 0
+                p.scale = 1, 1
+                p.points = (left, up, top), (left, down, top), (left, down, bottom)
+                b.planes.append(p)
+
+                # Up
+                p = m.Plane()
+                p.texture_name = texture
+                p.offset = 0, 0
+                p.rotation = 0
+                p.scale = 1, 1
+                p.points = (right, up, top), (left, up, top), (left, up, bottom)
+                b.planes.append(p)
+
+                # Down
+                p = m.Plane()
+                p.texture_name = texture
+                p.offset = 0, 0
+                p.rotation = 0
+                p.scale = 1, 1
+                p.points = (left, down, top), (right, down, top), (right, down, bottom)
+                b.planes.append(p)
+
+                e.brushes.append(b)
+
+                if classname != 'worldspawn':
+                    entities.append(e)
 
 # Clean up worldspawn wad property
 wad_set = set(worldspawn.wad.split(';'))
