@@ -5,6 +5,12 @@ Supported Tilemaps:
 
 Supported Games:
     - QUAKE
+
+Note:
+    The dependant tmx Python module has been modified:
+
+    tmx.__init__.py:373 -> 376
+       The casts to int need to be casts to float
 """
 
 import argparse
@@ -20,7 +26,7 @@ from quake import map as m
 import mathhelper
 
 
-__version__ = '0.5.0'
+__version__ = '0.6.0'
 
 
 class ResolvePathAction(argparse.Action):
@@ -436,22 +442,22 @@ for layer in tilemap.layers:
                 width = obj.width * scale
                 height = obj.height * scale
 
-                left = ex
-                right = ex + width
-                up = ey
-                down = ey - height
+                left = 0
+                right = left + width
+                up = 0
+                down = up - height
                 top = 4096
                 bottom = -4096
 
-                #mat = mathhelper.Matrices.translation_matrix(ex, ey)
-                #mat = numpy.dot(
-                #    mat,
-                #    mathhelper.Matrices.rotation_matrix(obj.rotation)
-                #)
-                #
-                #def xform_point(point):
-                #    result = numpy.dot(mat, (*point, 1))
-                #    return tuple(result.tolist()[:3])
+                mat = mathhelper.Matrices.translation_matrix(ex, ey)
+                mat = numpy.dot(
+                    mat,
+                    mathhelper.Matrices.rotation_matrix(-obj.rotation)
+                )
+
+                def xform_point(point):
+                    result = numpy.dot(mat, (*point, 1))
+                    return tuple(result.tolist()[:3])
 
                 texture = 'trigger'
                 if hasattr(e, 'texture'):
@@ -468,6 +474,7 @@ for layer in tilemap.layers:
                 p.rotation = 0
                 p.scale = 1, 1
                 p.points = (left, up, top), (right, up, top), (left, down, top)
+                p.points = tuple(map(xform_point, p.points))
                 b.planes.append(p)
 
                 # Bottom
@@ -477,9 +484,8 @@ for layer in tilemap.layers:
                 p.rotation = 0
                 p.scale = 1, 1
                 p.points = (left, down, bottom), (right, up, bottom), (left, up, bottom)
+                p.points = tuple(map(xform_point, p.points))
                 b.planes.append(p)
-
-
 
                 # Right
                 p = m.Plane()
@@ -488,6 +494,7 @@ for layer in tilemap.layers:
                 p.rotation = 0
                 p.scale = 1, 1
                 p.points = (right, down, top), (right, up, top), (right, up, bottom)
+                p.points = tuple(map(xform_point, p.points))
                 b.planes.append(p)
 
                 # Left
@@ -497,6 +504,7 @@ for layer in tilemap.layers:
                 p.rotation = 0
                 p.scale = 1, 1
                 p.points = (left, up, top), (left, down, top), (left, down, bottom)
+                p.points = tuple(map(xform_point, p.points))
                 b.planes.append(p)
 
                 # Up
@@ -506,6 +514,7 @@ for layer in tilemap.layers:
                 p.rotation = 0
                 p.scale = 1, 1
                 p.points = (right, up, top), (left, up, top), (left, up, bottom)
+                p.points = tuple(map(xform_point, p.points))
                 b.planes.append(p)
 
                 # Down
@@ -515,6 +524,7 @@ for layer in tilemap.layers:
                 p.rotation = 0
                 p.scale = 1, 1
                 p.points = (left, down, top), (right, down, top), (right, down, bottom)
+                p.points = tuple(map(xform_point, p.points))
                 b.planes.append(p)
 
                 e.brushes.append(b)
