@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="2017.11.22" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="32" tileheight="32" infinite="0" nextobjectid="9">
+<map version="1.0" tiledversion="2017.11.22" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="32" tileheight="32" infinite="0" nextobjectid="13">
  <tileset firstgid="1" source="basic.tsx"/>
  <layer name="Tile Layer 1" width="32" height="32">
   <data encoding="csv">
@@ -56,6 +56,16 @@
     <property name="Z" type="float" value="96"/>
    </properties>
    <point/>
+  </object>
+  <object id="9" name="worldspawn" x="512" y="533" width="16" height="16" rotation="45">
+   <properties>
+    <property name="texture" value="wall_0"/>
+   </properties>
+  </object>
+  <object id="12" name="worldspawn" x="512" y="372" width="16" height="16" rotation="45">
+   <properties>
+    <property name="texture" value="wall_0"/>
+   </properties>
   </object>
  </objectgroup>
 </map>
