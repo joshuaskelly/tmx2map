@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="2017.11.22" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="32" tileheight="32" infinite="0" nextobjectid="108">
+ <objectgroup name="ALL">
+  <object id="1" name="air_bubbles" x="0" y="0">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="3" name="ambient_comp_hum" x="224" y="0">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="4" name="ambient_drip" x="224" y="96">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="5" name="ambient_drone" x="224" y="192">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="6" name="ambient_flouro_buzz" x="224" y="288">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="7" name="ambient_light_buzz" x="224" y="384">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="8" name="ambient_suck_wind" x="224" y="480">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="9" name="ambient_swamp1" x="224" y="576">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="10" name="ambient_swamp2" x="224" y="672">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="13" name="ambient_thunder" x="224" y="768">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="14" name="event_lightning" x="448" y="0">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="targetname" value=""/>
+   </properties>
+   <point/>
+  </object>
+  <object id="15" name="info_intermission" x="672" y="0">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="mangle" value=""/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="16" name="info_notnull" x="672" y="96">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="17" name="info_null" x="672" y="192">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="18" name="info_player_coop" x="672" y="288">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="19" name="info_player_deathmatch" x="672" y="384">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="20" name="info_player_start" x="672" y="480">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="21" name="info_player_start2" x="672" y="576">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="22" name="info_teleport_destination" x="672" y="672">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="targetname" value=""/>
+   </properties>
+   <point/>
+  </object>
+  <object id="23" name="item_armor1" x="896" y="0">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="24" name="item_armor2" x="896" y="96">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="25" name="item_armor3" x="896" y="192">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="26" name="item_artifact_envirosuit" x="896" y="288">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="27" name="item_artifact_invisibility" x="896" y="384">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="28" name="item_artifact_invulnerability" x="896" y="480">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="29" name="item_artifact_super_damage" x="896" y="576">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="30" name="item_cells" x="896" y="672">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="31" name="item_health" x="896" y="768">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="32" name="item_key1" x="896" y="864">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="33" name="item_key2" x="896" y="960">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="34" name="item_rocket" x="896" y="1056">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="35" name="item_shells" x="896" y="1152">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="36" name="item_sigil" x="896" y="1248">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="37" name="item_spikes" x="896" y="1344">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="38" name="light" x="1120" y="0">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="light" type="float" value="300"/>
+    <property name="mangle" value=""/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="style" type="int" value="0"/>
+    <property name="wait" type="int" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="39" name="light_flame_large_yellow" x="1120" y="96">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="light" type="float" value="300"/>
+    <property name="mangle" value=""/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="style" type="int" value="0"/>
+    <property name="wait" type="int" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="40" name="light_flame_small_white" x="1120" y="192">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="light" type="float" value="300"/>
+    <property name="mangle" value=""/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="style" type="int" value="0"/>
+    <property name="wait" type="int" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="41" name="light_flame_small_yellow" x="1120" y="288">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="light" type="float" value="300"/>
+    <property name="mangle" value=""/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="style" type="int" value="0"/>
+    <property name="wait" type="int" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="42" name="light_fluoro" x="1120" y="384">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="light" type="float" value="300"/>
+    <property name="mangle" value=""/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="style" type="int" value="0"/>
+    <property name="wait" type="int" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="43" name="light_fluorospark" x="1120" y="480">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="light" type="float" value="300"/>
+    <property name="mangle" value=""/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="style" type="int" value="0"/>
+    <property name="wait" type="int" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="44" name="light_globe" x="1120" y="576">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="light" type="float" value="300"/>
+    <property name="mangle" value=""/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="style" type="int" value="0"/>
+    <property name="wait" type="int" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="45" name="light_torch_small_walltorch" x="1120" y="672">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="light" type="float" value="300"/>
+    <property name="mangle" value=""/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="style" type="int" value="0"/>
+    <property name="wait" type="int" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="46" name="misc_explobox" x="1344" y="0">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="47" name="misc_explobox2" x="1344" y="96">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="48" name="misc_fireball" x="1344" y="192">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="speed" type="float" value="40"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="49" name="misc_noisemaker" x="1344" y="288">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="50" name="misc_teleporttrain" x="1344" y="384">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="51" name="monster_army" x="1568" y="0">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="52" name="monster_boss" x="1568" y="96">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="53" name="monster_boss" x="1568" y="192">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="54" name="monster_demon1" x="1568" y="288">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="55" name="monster_dog" x="1568" y="384">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="56" name="monster_enforcer" x="1568" y="480">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="57" name="monster_fish" x="1568" y="576">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="58" name="monster_hell_knight" x="1568" y="672">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="59" name="monster_knight" x="1568" y="768">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="60" name="monster_ogre" x="1568" y="864">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="61" name="monster_ogre_marksman" x="1568" y="960">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="62" name="monster_oldone" x="1568" y="1056">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="63" name="monster_shalrath" x="1568" y="1152">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="64" name="monster_shambler" x="1568" y="1248">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="65" name="monster_tarbaby" x="1568" y="1344">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="66" name="monster_wizard" x="1568" y="1440">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="67" name="monster_zombie" x="1568" y="1536">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="69" name="path_corner" x="1792" y="0">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="70" name="trap_shooter" x="2016" y="0">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="72" name="trap_spikeshooter" x="2016" y="96">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="74" name="trigger_counter" x="2240" y="0">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="75" name="trigger_relay" x="2240" y="96">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="76" name="viewthing" x="2464" y="0">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="77" name="weapon_grenadelauncher" x="2688" y="0">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="78" name="weapon_lightning" x="2688" y="96">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="79" name="weapon_nailgun" x="2688" y="192">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="80" name="weapon_rocketlauncher" x="2688" y="288">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="81" name="weapon_supernailgun" x="2688" y="384">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="82" name="weapon_supershotgun" x="2688" y="480">
+   <properties>
+    <property name="Z" type="float" value="0"/>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="83" name="func_bossgate" x="3136" y="-32" width="32" height="32">
+   <properties>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="texture" value="trigger"/>
+   </properties>
+  </object>
+  <object id="84" name="func_button" x="3136" y="64" width="32" height="32">
+   <properties>
+    <property name="angle" type="float" value="0"/>
+    <property name="health" type="int" value="0"/>
+    <property name="lip" type="float" value="4"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="speed" type="float" value="40"/>
+    <property name="texture" value="+0butnn"/>
+    <property name="wait" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="85" name="func_detail" x="3136" y="160" width="32" height="32">
+   <properties>
+    <property name="texture" value="afloor1_4"/>
+   </properties>
+  </object>
+  <object id="87" name="func_door" x="3136" y="256" width="32" height="32">
+   <properties>
+    <property name="angle" type="float" value="0"/>
+    <property name="dmg" type="int" value="2"/>
+    <property name="health" type="int" value="0"/>
+    <property name="lip" type="float" value="8"/>
+    <property name="sounds" type="int" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="speed" type="float" value="100"/>
+    <property name="texture" value="door03_3"/>
+    <property name="wait" type="float" value="3"/>
+   </properties>
+  </object>
+  <object id="90" name="worldspawn" x="2912" y="-32" width="32" height="32">
+   <properties>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="texture" value="afloor1_4"/>
+   </properties>
+  </object>
+  <object id="91" name="func_door_secret" x="3136" y="352" width="32" height="32">
+   <properties>
+    <property name="angle" type="float" value="0"/>
+    <property name="dmg" type="int" value="2"/>
+    <property name="health" type="int" value="0"/>
+    <property name="lip" type="float" value="8"/>
+    <property name="sounds" type="int" value="3"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="texture" value="door03_3"/>
+    <property name="wait" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="92" name="func_episodegate" x="3136" y="448" width="32" height="32">
+   <properties>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="texture" value="trigger"/>
+   </properties>
+  </object>
+  <object id="93" name="func_illusionary" x="3136" y="544" width="32" height="32">
+   <properties>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="texture" value="afloor1_4"/>
+   </properties>
+  </object>
+  <object id="94" name="func_plat" x="3136" y="640" width="32" height="32">
+   <properties>
+    <property name="height" type="float" value="0"/>
+    <property name="sounds" type="int" value="1"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="speed" type="float" value="150"/>
+    <property name="texture" value="afloor1_4"/>
+   </properties>
+  </object>
+  <object id="95" name="func_train" x="3136" y="736" width="32" height="32">
+   <properties>
+    <property name="dmg" type="int" value="2"/>
+    <property name="sounds" type="int" value="1"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="speed" type="float" value="64"/>
+    <property name="texture" value="afloor1_4"/>
+   </properties>
+  </object>
+  <object id="96" name="func_wall" x="3136" y="832" width="32" height="32">
+   <properties>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="texture" value="afloor1_4"/>
+   </properties>
+  </object>
+  <object id="97" name="trigger_changelevel" x="3360" y="-32" width="32" height="32">
+   <properties>
+    <property name="delay" type="float" value="0"/>
+    <property name="map" value=""/>
+    <property name="message" value=""/>
+    <property name="sounds" type="int" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="texture" value="trigger"/>
+   </properties>
+  </object>
+  <object id="99" name="trigger_hurt" x="3360" y="64" width="32" height="32">
+   <properties>
+    <property name="dmg" type="int" value="5"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="texture" value="trigger"/>
+   </properties>
+  </object>
+  <object id="100" name="trigger_monsterjump" x="3360" y="160" width="32" height="32">
+   <properties>
+    <property name="angle" type="float" value="0"/>
+    <property name="height" type="float" value="200"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="speed" type="float" value="200"/>
+    <property name="texture" value="trigger"/>
+   </properties>
+  </object>
+  <object id="101" name="trigger_multiple" x="3360" y="256" width="32" height="32">
+   <properties>
+    <property name="delay" type="float" value="0"/>
+    <property name="message" value=""/>
+    <property name="sounds" type="int" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="texture" value="trigger"/>
+    <property name="wait" type="float" value="0.2"/>
+   </properties>
+  </object>
+  <object id="102" name="trigger_once" x="3360" y="352" width="32" height="32">
+   <properties>
+    <property name="delay" type="float" value="0"/>
+    <property name="message" value=""/>
+    <property name="sounds" type="int" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="texture" value="trigger"/>
+   </properties>
+  </object>
+  <object id="103" name="trigger_onlyregistered" x="3360" y="448" width="32" height="32">
+   <properties>
+    <property name="delay" type="float" value="0"/>
+    <property name="message" value=""/>
+    <property name="sounds" type="int" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="texture" value="trigger"/>
+   </properties>
+  </object>
+  <object id="104" name="trigger_push" x="3360" y="544" width="32" height="32">
+   <properties>
+    <property name="angle" type="float" value="0"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="speed" type="float" value="1000"/>
+    <property name="texture" value="trigger"/>
+   </properties>
+  </object>
+  <object id="105" name="trigger_secret" x="3360" y="640" width="32" height="32">
+   <properties>
+    <property name="delay" type="float" value="0"/>
+    <property name="message" value=""/>
+    <property name="sounds" type="int" value="1"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="texture" value="trigger"/>
+   </properties>
+  </object>
+  <object id="106" name="trigger_setskill" x="3360" y="736" width="32" height="32">
+   <properties>
+    <property name="message" value="1"/>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="texture" value="trigger"/>
+   </properties>
+  </object>
+  <object id="107" name="trigger_teleport" x="3360" y="832" width="32" height="32">
+   <properties>
+    <property name="spawnflags" type="int" value="0"/>
+    <property name="texture" value="trigger"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
