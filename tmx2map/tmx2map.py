@@ -102,15 +102,15 @@ def record_step_time():
 optional_print('Loading 2D tilemap...')
 # Load the tilemap
 try:
-    tmx_file = tmx.TileMap.load(args.tilemap_file)
+    tilemap = tmx.TileMap.load(args.tilemap_file)
 except:
-    tmx_file = None
+    tilemap = None
 
-if not tmx_file:
+if not tilemap:
     print('ERROR: failed to load: {}'.format(os.path.basename(args.tilemap_file)))
     sys.exit(1)
 
-tilesets_2d_found = len(tmx_file.tilesets)
+tilesets_2d_found = len(tilemap.tilesets)
 optional_print('{} 2D tileset{} found'.format(str(tilesets_2d_found).rjust(6), 's' if tilesets_2d_found > 1 else ''))
 
 # Resolve path to map file
@@ -127,9 +127,6 @@ if not os.path.exists(dir):
 # Get full path to mappings file
 cwd = os.getcwd()
 args.mapping_file = os.path.normpath(os.path.join(cwd, args.mapping_file))
-
-filepath = args.tilemap_file
-tilemap = tmx.TileMap.load(filepath)
 
 width = tilemap.width
 height = tilemap.height
