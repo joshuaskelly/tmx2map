@@ -26,7 +26,7 @@ from quake import map as m
 import mathhelper
 
 
-__version__ = '0.6.0'
+__version__ = '0.6.1'
 
 
 class ResolvePathAction(argparse.Action):
@@ -92,6 +92,19 @@ def optional_print(msg=''):
         print(msg)
 
 
+def report_error():
+    error_type, error_value, error_traceback = sys.exc_info()
+
+    if error_traceback.tb_next:
+        error_traceback = error_traceback.tb_next
+
+    filename = os.path.normpath(error_traceback.tb_frame.f_code.co_filename)
+    error_message = "ERROR: {}:{}: {}: {}".format(filename,
+                                                  error_traceback.tb_lineno,
+                                                  error_type.__name__,
+                                                  error_value)
+    print(error_message, file=sys.stderr)
+
 def record_step_time():
     delta = time.time() - start_time - step_timing[-1]
     step_timing.append(delta)
@@ -103,7 +116,9 @@ optional_print('Loading 2D tilemap...')
 # Load the tilemap
 try:
     tilemap = tmx.TileMap.load(args.tilemap_file)
+
 except:
+    report_error()
     tilemap = None
 
 if not tilemap:
@@ -138,6 +153,7 @@ try:
     with open(args.mapping_file) as file:
         tile_mapping = json.loads(file.read())
 except:
+    report_error()
     tile_mapping = None
 
 if not tile_mapping:
