@@ -9,7 +9,7 @@
 4. tmx2map
 
 ## Setup
-1. Copy this example somewhere to your hard drive.
+1. Copy this example(`basic/`) somewhere to your hard drive.
 2. Copy `basic/wads/basic.wad` to `QUAKE/id1/wads/basic.wad`
 3. Copy `tmx2map` to `basic/` (or optionally put it on your PATH).
 
