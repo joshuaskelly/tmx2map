@@ -7,7 +7,7 @@
 4. tmx2map
 
 ## Setup
-Note: This example directory and the Quake directory are referred to as `basic/` and `QUAKE/` respectively.
+Note: This directory and the Quake directory are referred to as `basic/` and `QUAKE/` respectively.
 
 1. Copy `basic/` somewhere to your hard drive.
 2. Copy `basic/wads/basic.wad` to `QUAKE/id1/wads/basic.wad`
@@ -17,7 +17,7 @@ Note: This example directory and the Quake directory are referred to as `basic/`
 tmx2map is intended to work alongside your existing Quake mapping workflow. It helps with the map authoring process and produces a Quake .map file. From there it can be edited, compiled, and lit to your liking.
 
 ### Example Workflow
-Note: This example directory and the Quake directory are referred to as `basic/` and `QUAKE/` respectively.
+Note: This directory and the Quake directory are referred to as `basic/` and `QUAKE/` respectively.
 
 1. Edit `basic/basic.tmx` with Tiled.
 2. From `basic/` run: `tmx2map basic.tmx mapping.json -d maps/example.map`
