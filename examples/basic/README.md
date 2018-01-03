@@ -1,0 +1,23 @@
+# Basic tmx2map Example
+
+
+## Prequisites
+
+1. [Tiled](http://www.mapeditor.org/)
+2. [Quake](http://store.steampowered.com/app/2310/QUAKE/)
+2. [Quake BSP Compiler](https://ericwa.github.io/ericw-tools/)
+
+## Setup
+1. Copy this example somewhere to your hard drive.
+2. Copy `basic/wads/basic.wad' to `QUAKE/id1/wads/basic.wad`
+3. Copy `tmx2map` to the example directory (or optionally put it on your PATH).
+
+## Workflow
+tmx2map is intended to work alongside your existing Quake mapping workflow. It helps with the map authoring process and produces a Quake .map file. From there it can be edited, compiled, and lit to your liking.
+
+### Example Workflow
+1. Edit `basic/basic.tmx` with Tiled.
+2. From the example directory run: `tmx2map basic.tmx mapping.json -d maps/example.map`
+3. Copy `basic/maps/example.map` to `QUAKE/id1/maps/example.map`
+4. From `QUAKE/id1/maps` run: `qbsp example.map`
+5. From `QUAKE` run: `quake +map example`
