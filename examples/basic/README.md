@@ -5,11 +5,12 @@
 
 1. [Tiled](http://www.mapeditor.org/)
 2. [Quake](http://store.steampowered.com/app/2310/QUAKE/)
-2. [Quake BSP Compiler](https://ericwa.github.io/ericw-tools/)
+3. [Quake BSP Compiler](https://ericwa.github.io/ericw-tools/)
+4. tmx2map
 
 ## Setup
 1. Copy this example somewhere to your hard drive.
-2. Copy `basic/wads/basic.wad' to `QUAKE/id1/wads/basic.wad`
+2. Copy `basic/wads/basic.wad` to `QUAKE/id1/wads/basic.wad`
 3. Copy `tmx2map` to the example directory (or optionally put it on your PATH).
 
 ## Workflow
