@@ -11,7 +11,7 @@
 ## Setup
 1. Copy this example somewhere to your hard drive.
 2. Copy `basic/wads/basic.wad` to `QUAKE/id1/wads/basic.wad`
-3. Copy `tmx2map` to the `basic/` (or optionally put it on your PATH).
+3. Copy `tmx2map` to `basic/` (or optionally put it on your PATH).
 
 ## Workflow
 tmx2map is intended to work alongside your existing Quake mapping workflow. It helps with the map authoring process and produces a Quake .map file. From there it can be edited, compiled, and lit to your liking.
