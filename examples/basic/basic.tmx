@@ -2,6 +2,9 @@
 <map version="1.0" tiledversion="2017.11.22" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="32" tileheight="32" infinite="0" nextobjectid="13">
  <tileset firstgid="1" source="basic.tsx"/>
  <layer name="Tile Layer 1" width="32" height="32">
+  <properties>
+   <property name="Z Offset" type="float" value="0"/>
+  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -38,6 +41,9 @@
 </data>
  </layer>
  <objectgroup name="Object Layer 1">
+  <properties>
+   <property name="Z Offset" type="float" value="0"/>
+  </properties>
   <object id="1" name="info_player_start" x="127.5" y="463.5">
    <properties>
     <property name="Z" type="float" value="120"/>

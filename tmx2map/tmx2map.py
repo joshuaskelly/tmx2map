@@ -26,7 +26,7 @@ from quake import map as m
 import mathhelper
 
 
-__version__ = '0.6.1'
+__version__ = '0.7.0'
 
 
 class ResolvePathAction(argparse.Action):
@@ -227,6 +227,12 @@ brush_count = 0
 
 for layer in tilemap.layers:
     # Tile layer
+    z_offset_property = [p for p in layer.properties if p.name == 'Z Offset']
+    layer_offset_z = 0
+
+    if z_offset_property:
+        layer_offset_z = z_offset_property[0].value
+
     if isinstance(layer, tmx.Layer):
         for index, tile in enumerate(layer.tiles):
             # GIDs start at 1 so 0 is the empty 2D tile.
@@ -249,11 +255,10 @@ for layer in tilemap.layers:
 
             tilemap_offset_x = x * tile_size_3d + (tile_size_3d / 2) - (tilemap_width_3d / 2)
             tilemap_offset_y = y * tile_size_3d - (tile_size_3d / 2) - (tilemap_height_3d / 2)
-            tilemap_offset_z = 0
 
             # Calculate tile transformation matrix
             mat = numpy.identity(4)
-            mat[:3, 3] = tilemap_offset_x, tilemap_offset_y, tilemap_offset_z
+            mat[:3, 3] = tilemap_offset_x, tilemap_offset_y, layer_offset_z
 
             flip_matrix = numpy.identity(4)
 
@@ -375,7 +380,7 @@ for layer in tilemap.layers:
                         texture_transform = numpy.dot(texture_translation_matrix, texture_scale_matrix)
                         texture_transform = numpy.dot(texture_transform, texture_rotation_matrix)
 
-                        brush_offset = tilemap_offset_x, tilemap_offset_y, tilemap_offset_z, 1.0
+                        brush_offset = tilemap_offset_x, tilemap_offset_y, layer_offset_z, 1.0
 
                         world_swizzle_matrix = mathhelper.Matrices.axis_aligned_swizzle_matrix(dominant_axis)
                         relative_offset = numpy.dot(world_swizzle_matrix, brush_offset)
@@ -410,13 +415,13 @@ for layer in tilemap.layers:
             elif obj.width > 0 and obj.height > 0:
                 object_type = 'Rectangle'
 
-            z = 0
+            z = layer_offset_z
 
             if object_type == 'Point':
                 e = m.Entity()
                 for prop in obj.properties:
                     if prop.name == 'Z':
-                        z = prop.value
+                        z += prop.value
 
                     else:
                         setattr(e, prop.name, prop.value)
