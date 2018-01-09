@@ -14,6 +14,8 @@ Note:
 """
 
 import argparse
+import imp
+import importlib
 import json
 import os
 import sys
@@ -28,6 +30,26 @@ import mathhelper
 
 __version__ = '0.7.0'
 
+
+registry = {
+    'intput': [],
+    'output': []
+}
+
+# Get a listing of python scripts in plugins directory
+plugin_dir = os.path.normpath(os.path.join(os.getcwd(), './plugins'))
+if not os.path.exists(plugin_dir):
+    print("Unable to locate plugins directory")
+    sys.exit(1)
+
+# Register each?
+plugins = [f for f in os.listdir(plugin_dir) if f.split('.')[-1] == 'py']
+for plugin in plugins:
+    module_filepath = os.path.normpath(os.path.join(plugin_dir, plugin))
+    module_name = plugin.split('.')[0]
+    module = importlib.import_module(module_name, plugin_dir)
+    #module = imp.load_source('name', plugin)
+    module.register(registry)
 
 class ResolvePathAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
