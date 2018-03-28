@@ -21,9 +21,10 @@ import time
 
 import numpy
 import tmx
+
 from quake import map as m
 
-import mathhelper
+from . import mathhelper
 
 
 __version__ = '0.7.0'
